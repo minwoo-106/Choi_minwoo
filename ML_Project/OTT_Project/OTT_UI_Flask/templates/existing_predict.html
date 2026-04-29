@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-section page-tight-top">
+    <div class="shell page-shell narrow-shell result-shell-wide">
+        <div class="page-hero compact-hero slim-hero">
+            <span class="eyebrow">기존 유저 예측</span>
+            <h1>회원 번호를 입력하여 구독 해지 위험도를 예측합니다.</h1>
+        </div>
+
+        <section class="glass-card form-card feature-focus-card form-focus-card">
+            <div class="card-head compact-head align-center no-subtext">
+                <div>
+                    <h2>회원 번호 입력</h2>
+                </div>
+            </div>
+            <div class="existing-input-row existing-input-row-wide">
+                <label class="field field-large">
+                    <span>회원 번호</span>
+                    <input id="existingMemberNo" type="number" placeholder="예: 31">
+                </label>
+                <button class="btn primary action-btn action-btn-wide" id="existingPredictBtn">예측하기</button>
+            </div>
+        </section>
+
+        <section class="glass-card result-panel hidden" id="existingResultPanel">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow">예측 결과</span>
+                    <h2>회원 예측 결과</h2>
+                </div>
+            </div>
+
+            <div class="result-grid result-grid-emphasis">
+                <div class="result-summary result-summary-charted">
+                    <div class="result-topline">
+                        <div class="risk-badge" id="existingRiskBadge">안정</div>
+                        <div class="metric-card metric-card-compact">
+                            <span>예측 확률</span>
+                            <strong id="existingConfidence">0%</strong>
+                        </div>
+                    </div>
+                    <div class="probability-bars" id="existingProbabilityBars"></div>
+                </div>
+
+                <div class="result-detail">
+                    <div class="reason-box reason-box-tall">
+                        <h3>판단 사유</h3>
+                        <ul id="existingReasons" class="reason-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-grid">
+                <details class="accordion" id="existingSummaryAccordion">
+                    <summary>입력 요약 보기</summary>
+                    <div class="summary-grid" id="existingSummary"></div>
+                </details>
+
+                <details class="accordion chart-accordion" id="existingChartAccordion">
+                    <summary>차트 보기</summary>
+                    <div class="chart-grid chart-grid-single chart-grid-profile">
+                        <div class="chart-card chart-card-large">
+                            <div class="chart-card-head compact-white">
+                                <h3>회원 이용 성향 지표</h3>
+                                <p>입력된 회원 정보 기준의 상대 지표를 확인할 수 있습니다.</p>
+                            </div>
+                            <div class="chart-wrap result-chart-wrap profile-chart-wrap">
+                                <canvas id="existingProfileChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </div>
+</section>
+<script defer src="{{ url_for('static', filename='js/existing.js') }}"></script>
+{% endblock %}

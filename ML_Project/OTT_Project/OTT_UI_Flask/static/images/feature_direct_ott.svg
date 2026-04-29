@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 520" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="96" y1="84" x2="512" y2="438" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67E2FF"/>
+      <stop offset="0.55" stop-color="#868BFF"/>
+      <stop offset="1" stop-color="#D45DFF"/>
+    </linearGradient>
+  </defs>
+  <rect x="106" y="88" width="300" height="344" rx="28" fill="#0D1C47" stroke="url(#g1)" stroke-width="8"/>
+  <rect x="138" y="130" width="236" height="36" rx="18" fill="#EAF7FF" fill-opacity="0.12"/>
+  <rect x="138" y="190" width="196" height="20" rx="10" fill="#59CCFF" fill-opacity="0.42"/>
+  <rect x="138" y="228" width="220" height="20" rx="10" fill="#7F88FF" fill-opacity="0.42"/>
+  <rect x="138" y="266" width="180" height="20" rx="10" fill="#E064FF" fill-opacity="0.34"/>
+  <rect x="138" y="326" width="124" height="54" rx="18" fill="#DFF3FF" fill-opacity="0.14" stroke="#DFF3FF" stroke-opacity="0.55" stroke-width="4"/>
+  <path d="M454 154L528 122C539 117 551 127 548 140L525 252C522 269 499 274 489 260L468 231L431 267C420 278 402 278 391 267L372 248C361 237 361 219 372 208L409 171L380 142C367 129 374 108 392 104L454 154Z" fill="#0E224E" stroke="#7EDBFF" stroke-width="6"/>
+  <path d="M420 172L508 133L469 221" stroke="#EAF7FF" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="464" cy="346" r="68" fill="#0E224E" stroke="#D46BFF" stroke-width="6"/>
+  <path d="M431 346L453 368L499 322" stroke="#EAF7FF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

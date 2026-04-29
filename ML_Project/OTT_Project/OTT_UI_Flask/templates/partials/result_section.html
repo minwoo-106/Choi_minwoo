@@ -1,0 +1,77 @@
+<section id="resultSection" class="result-section hidden-section">
+    <div class="result-layout">
+        <div class="glass-panel result-panel wide-result-panel">
+            <div class="section-title-row">
+                <div>
+                    <h2>예측 결과</h2>
+                    <p>예측 등급, 확률, 판단 사유를 확인할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <div class="result-top-row">
+                <div class="result-badge-box">
+                    <span id="resultRiskBadge" class="risk-badge neutral">분석 대기</span>
+                    <p id="resultMemberNoText">회원 번호 또는 입력 방식이 여기에 표시됩니다.</p>
+                </div>
+                <div class="result-confidence-box">
+                    <span>예측 신뢰도</span>
+                    <strong id="resultConfidence">-</strong>
+                </div>
+            </div>
+
+            <div class="probability-grid">
+                <div class="probability-card">
+                    <div class="prob-label-row"><span>안정</span><strong id="probStableText">0%</strong></div>
+                    <div class="soft-track"><div id="probStableBar" class="soft-fill stable-fill" style="width:0%"></div></div>
+                </div>
+                <div class="probability-card">
+                    <div class="prob-label-row"><span>주의</span><strong id="probCautionText">0%</strong></div>
+                    <div class="soft-track"><div id="probCautionBar" class="soft-fill caution-fill" style="width:0%"></div></div>
+                </div>
+                <div class="probability-card">
+                    <div class="prob-label-row"><span>위험</span><strong id="probRiskText">0%</strong></div>
+                    <div class="soft-track"><div id="probRiskBar" class="soft-fill risk-fill" style="width:0%"></div></div>
+                </div>
+            </div>
+
+            <div class="glass-sub-panel reason-panel">
+                <h3>판단 사유</h3>
+                <ul id="reasonList" class="reason-list"></ul>
+            </div>
+
+            <div class="accordion app-accordion" id="summaryAccordion">
+                <div class="accordion-item summary-accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#summaryCollapse" aria-expanded="false" aria-controls="summaryCollapse">
+                            입력 요약 보기
+                        </button>
+                    </h2>
+                    <div id="summaryCollapse" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                        <div class="accordion-body">
+                            <div id="inputSummaryGrid" class="input-summary-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-section-grid">
+        <div class="glass-panel chart-panel">
+            <h3>위험도 분포</h3>
+            <canvas id="riskChart"></canvas>
+        </div>
+        <div class="glass-panel chart-panel">
+            <h3>연령대 분포</h3>
+            <canvas id="ageChart"></canvas>
+        </div>
+        <div class="glass-panel chart-panel">
+            <h3>이용 빈도 분포</h3>
+            <canvas id="frequencyChart"></canvas>
+        </div>
+        <div class="glass-panel chart-panel wide-chart-panel">
+            <h3>월 결제액 분포</h3>
+            <canvas id="feeChart"></canvas>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-section page-tight-top">
+    <div class="shell page-shell wide-shell result-shell-wide">
+        <div class="page-hero compact-hero slim-hero">
+            <span class="eyebrow">직접 입력 예측</span>
+            <h1>입력값을 조정하여 구독 해지 위험도를 예측합니다.</h1>
+        </div>
+
+        <section class="glass-card form-card wide form-compressed-card">
+            <div class="card-head compact-head no-subtext">
+                <div>
+                    <h2>정보 입력</h2>
+                </div>
+            </div>
+
+            <form id="directPredictForm" class="form-grid form-grid-compact">
+                {% set select_fields = [
+                    ('GENDER','성별'), ('AGE_GROUP','연령대'), ('INCOME_GROUP','소득 구간'), ('FAMILY_TYPE','가구 형태'),
+                    ('MONTHLY_FEE_CODE','월 결제액'), ('HAS_AD_PLAN','광고 요금제 이용 여부'), ('AD_INTENT','광고 요금제 이용 의향'),
+                    ('USE_FREQUENCY','이용 빈도'), ('WEEKDAY_TIME_CODE','주중 이용 시간대'), ('WEEKEND_TIME_CODE','주말 이용 시간대'),
+                    ('SEARCH_VIEW','검색 시청 성향'), ('RECOMMEND_VIEW','추천 시청 성향'), ('BINGE_WATCH','몰아보기 성향')
+                ] %}
+                {% for field, label in select_fields %}
+                <label class="field">
+                    <span>{{ label }}</span>
+                    <select name="{{ field }}" data-fill-options="{{ field }}"></select>
+                </label>
+                {% endfor %}
+
+                <label class="field">
+                    <span>이용 기기 수</span>
+                    <input type="number" min="1" max="10" name="DEVICE_COUNT" value="2">
+                </label>
+                <label class="field">
+                    <span>이용 OTT 수</span>
+                    <input type="number" min="1" max="10" name="OTT_SERVICE_COUNT" value="2">
+                </label>
+                <label class="field">
+                    <span>이용 콘텐츠 수</span>
+                    <input type="number" min="1" max="20" name="CONTENT_TYPE_COUNT" value="3">
+                </label>
+                <label class="field">
+                    <span>이용 방송 유형 수</span>
+                    <input type="number" min="1" max="20" name="BROADCAST_TYPE_COUNT" value="2">
+                </label>
+            </form>
+
+            <div class="form-actions">
+                <button class="btn primary action-btn action-btn-wide" id="directPredictBtn" type="button">예측하기</button>
+            </div>
+        </section>
+
+        <section class="glass-card result-panel hidden" id="directResultPanel">
+            <div class="section-head">
+                <div>
+                    <span class="eyebrow">예측 결과</span>
+                    <h2>직접 입력 예측 결과</h2>
+                </div>
+            </div>
+
+            <div class="result-grid result-grid-emphasis">
+                <div class="result-summary result-summary-charted">
+                    <div class="result-topline">
+                        <div class="risk-badge" id="directRiskBadge">안정</div>
+                        <div class="metric-card metric-card-compact">
+                            <span>예측 확률</span>
+                            <strong id="directConfidence">0%</strong>
+                        </div>
+                    </div>
+                    <div class="probability-bars" id="directProbabilityBars"></div>
+                </div>
+
+                <div class="result-detail">
+                    <div class="reason-box reason-box-tall">
+                        <h3>판단 사유</h3>
+                        <ul id="directReasons" class="reason-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-grid">
+                <details class="accordion" id="directSummaryAccordion">
+                    <summary>입력 요약 보기</summary>
+                    <div class="summary-grid" id="directSummary"></div>
+                </details>
+
+                <details class="accordion chart-accordion" id="directChartAccordion">
+                    <summary>차트 보기</summary>
+                    <div class="chart-grid chart-grid-single chart-grid-profile">
+                        <div class="chart-card chart-card-large">
+                            <div class="chart-card-head compact-white">
+                                <h3>입력 이용 성향 지표</h3>
+                                <p>직접 입력한 정보를 기준으로 상대 지표를 확인할 수 있습니다.</p>
+                            </div>
+                            <div class="chart-wrap result-chart-wrap profile-chart-wrap">
+                                <canvas id="directProfileChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+    </div>
+</section>
+<script defer src="{{ url_for('static', filename='js/direct.js') }}"></script>
+{% endblock %}
